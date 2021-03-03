@@ -32,7 +32,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        use: ['babel-loader'],
         exclude: [/node_modules/],
       },
       {
@@ -40,25 +40,17 @@ module.exports = {
         loader: 'vue-loader',
       },
       {
-        test: /\.(sass)$/,
+        test: /\.css$/,
         use: [
           'vue-style-loader',
-          MiniCssExtractPlugin.loader,
+          'style-loader',
+          // MiniCssExtractPlugin.loader,
           'css-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              sassOptions: {
-                indentedSyntax: true,
-              },
-              additionalData: '@import "@/sass/global.sass"',
-            },
-          },
         ],
       },
       {
         test: /\.svg$/,
-        use: ['babel-loader', 'vue-svg-loader'],
+        use: 'svg-inline-loader',
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,

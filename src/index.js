@@ -1,10 +1,5 @@
-import Vue from 'vue';
-import CKEditor from 'ckeditor4-vue';
+import { createApp } from 'vue';
 import App from './App';
 
-Vue.use(CKEditor);
-console.log(CKEditor);
-
-new Vue({
-  render: (h) => h(App),
-}).$mount('#app');
+createApp(App)
+  .mount('#app');

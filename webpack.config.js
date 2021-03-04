@@ -20,7 +20,7 @@ module.exports = {
       filename: 'style.[contenthash:8].css',
     }),
   ],
-  devtool: process.env.NODE_ENV ? 'suurce-map' : 'inline-source-map',
+  devtool: 'eval-cheap-source-map',
   devServer: {
     port: 8000,
   },
@@ -41,7 +41,7 @@ module.exports = {
         loader: 'vue-loader',
       },
       {
-        test: /\.css$/,
+        test: /\.(css)$/,
         exclude: path.resolve(__dirname, 'node_modules/@ckeditor'),
         use: [
           'vue-style-loader',

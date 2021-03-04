@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
+const { styles } = require('@ckeditor/ckeditor5-dev-utils');
 
 module.exports = {
   mode: 'development',
@@ -41,6 +42,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        exclude: path.resolve(__dirname, 'node_modules/@ckeditor'),
         use: [
           'vue-style-loader',
           'style-loader',
@@ -50,7 +52,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        use: 'svg-inline-loader',
+        use: ['raw-loader'],
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -80,12 +82,37 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: {
+              injectType: 'singletonStyleTag',
+              attributes: {
+                'data-cke': true,
+              },
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: styles.getPostCssConfig({
+              themeImporter: {
+                themePath: require.resolve('@ckeditor/ckeditor5-theme-lark'),
+              },
+              minify: true,
+            }),
+          },
+        ],
+      },
     ],
   },
   resolve: {
-    extensions: ['.vue', '.js', '.sass', '.pug'],
+    symlinks: false,
+    extensions: ['.vue', '.js'],
     alias: {
       '@': path.resolve(__dirname, 'src/'),
     },
   },
+  performance: { hints: false },
 };

@@ -27,8 +27,8 @@ export default {
         editor: ClassicEditor,
         data: '',
         config: {
-          plugins: [Essentials, Paragraph, Bold, Italic, MathType],
-          toolbar: ['bold', 'italic', 'MathType', 'ChemType'],
+          plugins: [Essentials, Paragraph, Bold, Italic, MathType], // MathType
+          toolbar: ['bold', 'italic', 'MathType', 'ChemType'], //'MathType', 'ChemType'
         },
       },
     };

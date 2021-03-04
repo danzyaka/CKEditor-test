@@ -12,11 +12,18 @@
     "serve": "webpack serve --open"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-basic-styles": "^26.0.0",
     "@ckeditor/ckeditor5-build-classic": "^26.0.0",
+    "@ckeditor/ckeditor5-dev-utils": "^24.3.0",
     "@ckeditor/ckeditor5-editor-classic": "^26.0.0",
+    "@ckeditor/ckeditor5-essentials": "^26.0.0",
+    "@ckeditor/ckeditor5-paragraph": "^26.0.0",
+    "@ckeditor/ckeditor5-theme-lark": "^26.0.0",
     "@ckeditor/ckeditor5-vue": "^2.0.1",
     "@wiris/mathtype-ckeditor5": "^7.24.4",
     "axios": "^0.21.1",
+    "postcss-loader": "3",
+    "style-loader": "1",
     "svg-inline-loader": "^0.8.2",
     "vue": "^3.0.7"
   },
@@ -39,7 +46,6 @@
     "node-sass": "^5.0.0",
     "raw-loader": "^4.0.2",
     "sass-loader": "^11.0.0",
-    "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
     "vue-loader": "^16.1.2",
     "vue-style-loader": "^4.1.2",
